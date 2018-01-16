@@ -44,7 +44,7 @@ function listenToUser(canvas) {
             var y = aaa.touches[0].clientY
             using = true
             if (eraserEnabled) {
-                context.clearRect(x - 5, y - 5, 10, 10)
+                context.clearRect(x, y , 10, 10)
             } else {
                 lastPoint = {
                     x: x,
@@ -59,7 +59,7 @@ function listenToUser(canvas) {
                 return;
             }
             if (eraserEnabled) {
-                context.clearRect(x - 5, y - 5, 10, 10)
+                context.clearRect(x , y , 10, 10)
             } else {
                 var newPoint = {
                     x: x,
