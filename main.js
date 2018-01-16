@@ -20,15 +20,7 @@ function initCanvasSize(canvas) {
         canvas.height = pageHeight
     }
 }
-/*画线*/
-function drawLine(x1, y1, x2, y2) {
-    context.beginPath()
-    context.moveTo(x1, y1)
-    context.lineWidth = 4
-    context.lineTo(x2, y2)
-    context.stroke()
-    context.closePath()
-}
+
 /*监听用户鼠标事件*/
 function listenToUser(canvas) {
     var using = false
@@ -108,13 +100,67 @@ function listenToUser(canvas) {
         }
     }
 }
-/*****是否启用橡皮*****/
+/*****启用橡皮或者画笔*****/
 var eraserEnabled = false
-eraser.onclick = function () {
-    eraserEnabled = true
-    actions.className = 'actions x'
-}
-brush.onclick = function () {
+brush.onclick = function(){
     eraserEnabled = false
-    actions.className = 'actions'
+    brush.classList.add('active')
+    eraser.classList.remove('active')
+    context.strokeStyle = 'black'
+    red.classList.remove('active')
+    green.classList.remove('active')
+    yellow.classList.remove('active') 
+    context.lineWidth = 1
+    thin.classList.remove('active')    
+    thick.classList.remove('active')        
+
+}
+eraser.onclick = function(){
+    eraserEnabled = true
+    eraser.classList.add('active')
+    brush.classList.remove('active')
+    red.classList.remove('active')
+    green.classList.remove('active')
+    yellow.classList.remove('active') 
+}
+/*画线*/
+function drawLine(x1, y1, x2, y2) {
+    context.beginPath()
+    context.moveTo(x1, y1)
+    context.lineWidth
+    context.lineTo(x2, y2)
+    context.stroke()
+    context.closePath()
+}
+/****颜色选择***/
+red.onclick = function(){
+    context.strokeStyle = 'red'
+    red.classList.add('active')
+    green.classList.remove('active')
+    yellow.classList.remove('active')    
+}
+green.onclick = function(){
+    context.strokeStyle = 'green'
+    red.classList.remove('active')
+    green.classList.add('active')
+    yellow.classList.remove('active')  
+}
+yellow.onclick = function(){
+    context.strokeStyle = 'yellow'
+    red.classList.remove('active')
+    green.classList.remove('active')
+    yellow.classList.add('active')  
+}
+thin.onclick = function(){
+    context.lineWidth = 2
+    thin.classList.add('active')
+    thick.classList.remove('active')
+}
+thick.onclick = function(){
+    context.lineWidth = 5
+    thick.classList.add('active')
+    thin.classList.remove('active')    
+}
+clear.onclick = function(){
+    context.clearRect(0,0,xxx.width,xxx.height)
 }
