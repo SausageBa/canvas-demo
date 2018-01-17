@@ -151,6 +151,7 @@ yellow.onclick = function(){
     green.classList.remove('active')
     yellow.classList.add('active')  
 }
+/****调节粗细****/
 thin.onclick = function(){
     context.lineWidth = 2
     thin.classList.add('active')
@@ -161,6 +162,16 @@ thick.onclick = function(){
     thick.classList.add('active')
     thin.classList.remove('active')    
 }
+/****清空画板***/
 clear.onclick = function(){
     context.clearRect(0,0,xxx.width,xxx.height)
+}
+/***保存图片***/
+save.onclick = function(){
+    var url = xxx.toDataURL("image/png")
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = '我的画儿'
+    a.click()
 }
